@@ -1,3 +1,29 @@
+let playerSelection = "";
+let computerSelection = computerPlay();
+const choices = document.querySelectorAll(".choice");
+const container = document.querySelector("#container");
+const p = document.querySelector("p");
+const reset = document.querySelector("#reset");
+
+for (var i = 0; i < choices.length; i++) {
+  choices[i].addEventListener("click", function() {
+    playerSelection = this.textContent;
+    game();
+    for (var a = 0; a < choices.length; a++) {
+      choices[a].disabled = true;
+    }
+  });
+}
+
+reset.addEventListener("click", function() {
+  playerSelection = "";
+  computerSelection = computerPlay();
+  p.textContent = "";
+  for (var a = 0; a < choices.length; a++) {
+    choices[a].disabled = false;
+  }
+});
+
 function computerPlay() {
   var randomNumber = Math.ceil(Math.random() * 3);
   if (randomNumber === 1) {
@@ -34,14 +60,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  const playerSelection = prompt("Rock, paper or scissors?");
-  const computerSelection = computerPlay();
-
-  //playRound(playerSelection, computerSelection);
-  console.log(playRound(playerSelection, computerSelection));
+  p.textContent = playRound(playerSelection, computerSelection);
 }
-
-game();
 
 //cases
 //player rock comp scissors - win
