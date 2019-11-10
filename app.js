@@ -1,10 +1,19 @@
 let playerSelection = "";
 let computerSelection = computerPlay();
+let playerScore = 0;
+let computerScore = 0;
+
 const choices = document.querySelectorAll(".choice");
 const container = document.querySelector("#container");
 const p = document.querySelector("p");
 const reset = document.querySelector("#reset");
+const scoreDisplay = document.querySelector("#score");
+const winnerDisplay = document.querySelector("#winner");
+const scoreReset = document.querySelector("#scoreReset");
 
+//Event listeners
+
+//player choice buttons
 for (var i = 0; i < choices.length; i++) {
   choices[i].addEventListener("click", function() {
     playerSelection = this.textContent;
@@ -15,6 +24,7 @@ for (var i = 0; i < choices.length; i++) {
   });
 }
 
+//play again
 reset.addEventListener("click", function() {
   playerSelection = "";
   computerSelection = computerPlay();
@@ -22,6 +32,12 @@ reset.addEventListener("click", function() {
   for (var a = 0; a < choices.length; a++) {
     choices[a].disabled = false;
   }
+});
+
+//reset score
+scoreReset.addEventListener("click", function() {
+  resetScore();
+  scoreDisplay.textContent = "Score: Player: 0 Computer: 0";
 });
 
 function computerPlay() {
@@ -38,6 +54,18 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  if (playerWin(playerSelection, computerSelection)) {
+    playerScore += 1;
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else if (computerWin(playerSelection, computerSelection)) {
+    computerScore += 1;
+    return `You lose... ${computerSelection} beats ${playerSelection}`;
+  } else {
+    return `Draw! You both selected ${computerSelection}!`;
+  }
+}
+
+function playerWin(playerSelection, computerSelection) {
   if (
     (playerSelection.toLowerCase() === "rock" &&
       computerSelection === "scissors") ||
@@ -45,22 +73,38 @@ function playRound(playerSelection, computerSelection) {
       computerSelection === "paper") ||
     (playerSelection.toLowerCase() === "paper" && computerSelection === "rock")
   ) {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
-  } else if (
+    return true;
+  } else return false;
+}
+
+function computerWin(playerSelection, computerSelection) {
+  if (
     (playerSelection.toLowerCase() === "scissors" &&
       computerSelection === "rock") ||
     (playerSelection.toLowerCase() === "paper" &&
       computerSelection === "scissors") ||
     (playerSelection.toLowerCase() === "paper" && computerSelection === "rock")
   ) {
-    return `You lose... ${computerSelection} beats ${playerSelection}`;
-  } else {
-    return `Draw! You both selected ${computerSelection}!`;
-  }
+    return true;
+  } else return false;
 }
 
 function game() {
   p.textContent = playRound(playerSelection, computerSelection);
+  scoreDisplay.textContent = `Score: Player: ${playerScore} Computer: ${computerScore}`;
+  if (playerScore === 5) {
+    winnerDisplay.textContent = "Winner!!!";
+    resetScore();
+  }
+  if (computerScore === 5) {
+    winnerDisplay.textContent = "Computer wins";
+    resetScore();
+  }
+}
+
+function resetScore() {
+  playerScore = 0;
+  computerScore = 0;
 }
 
 //cases
