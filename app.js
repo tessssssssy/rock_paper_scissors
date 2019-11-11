@@ -16,10 +16,11 @@ const scoreReset = document.querySelector("#scoreReset");
 //player choice buttons
 for (var i = 0; i < choices.length; i++) {
   choices[i].addEventListener("click", function() {
-    playerSelection = this.textContent;
+    playerSelection = this.value;
     game();
     for (var a = 0; a < choices.length; a++) {
-      choices[a].disabled = true;
+      choices[a].classList.add("hideButton");
+      reset.classList.remove("hideButton");
     }
   });
 }
@@ -29,8 +30,9 @@ reset.addEventListener("click", function() {
   playerSelection = "";
   computerSelection = computerPlay();
   p.textContent = "";
+  reset.classList.add("hideButton");
   for (var a = 0; a < choices.length; a++) {
-    choices[a].disabled = false;
+    choices[a].classList.remove("hideButton");
   }
 });
 

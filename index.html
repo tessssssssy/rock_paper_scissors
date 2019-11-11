@@ -11,17 +11,31 @@
     <title>Rock Paper Scissors</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="app.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <h1>Rock Paper Scissors</h1>
     <div id="container">
-      <h2>Pick one:</h2>
-      <button class="choice" id="rock">Rock</button>
-      <button class="choice" id="paper">Paper</button>
-      <button class="choice" id="scissors">Scissors</button>
+      <h2>Choose!</h2>
+      <button class="choice" id="rock" value="rock">
+        <i class="far fa-hand-rock"></i>
+      </button>
+      <button class="choice" id="paper" value="paper">
+        <i class="far fa-hand-paper"></i>
+      </button>
+      <button class="choice" id="scissors" value="scissors">
+        <i class="far fa-hand-scissors"></i>
+      </button>
       <p id="result"></p>
-      <button id="reset">Play Again</button>
+      <button class="hideButton" id="reset">Play Again</button>
       <h3 id="score">Score: Player: 0 Computer: 0</h3>
       <h1 id="winner"></h1>
       <button id="scoreReset">Reset Score</button>

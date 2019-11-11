@@ -1,0 +1,64 @@
+body {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 85px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+#container {
+  margin: 20px auto;
+  width: 600px;
+  text-align: center;
+  align-items: center;
+}
+.choice {
+  display: inline-block;
+  text-transform: uppercase;
+  align-self: center;
+  font-size: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: none;
+  border: none;
+}
+.choice:hover {
+  cursor: pointer;
+  color: skyblue;
+}
+.hideButton {
+  display: none;
+}
+
+p {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+#reset {
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-family: "Oswald", sans-serif;
+}
+#reset:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+#scoreReset {
+  font-size: 18px;
+  border: 2px solid black;
+  font-family: "Oswald", sans-serif;
+  border-radius: 5px;
+}
+
+#scoreReset:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
