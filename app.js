@@ -20,7 +20,9 @@ for (var i = 0; i < choices.length; i++) {
     game();
     for (var a = 0; a < choices.length; a++) {
       choices[a].classList.add("hideButton");
-      reset.classList.remove("hideButton");
+      if (playerScore !== 5 && computerScore !== 5) {
+        reset.classList.remove("hideButton");
+      }
     }
   });
 }
@@ -96,17 +98,21 @@ function game() {
   scoreDisplay.textContent = `Score: Player: ${playerScore} Computer: ${computerScore}`;
   if (playerScore === 5) {
     winnerDisplay.textContent = "Winner!!!";
-    resetScore();
+    //reset.classList.add("hideButton");
   }
   if (computerScore === 5) {
     winnerDisplay.textContent = "Computer wins";
-    resetScore();
+    //reset.classList.add("hideButton");
   }
 }
 
 function resetScore() {
   playerScore = 0;
   computerScore = 0;
+  winnerDisplay.textContent = "";
+  for (var a = 0; a < choices.length; a++) {
+    choices[a].classList.remove("hideButton");
+  }
 }
 
 //cases
